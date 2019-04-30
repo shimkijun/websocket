@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<aop:aspectj-autoproxy />
+	<context:property-placeholder location="classpath:config/dataSource.properties"/>
+	
+	<!-- HikariCP configuration -->
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+	    <constructor-arg>
+	        <bean class="com.zaxxer.hikari.HikariConfig">
+	            <constructor-arg>
+	                <props>
+	                    <prop key="jdbcUrl">${db.url}</prop>
+	                    <prop key="username">${db.username}</prop>
+	                    <prop key="password">${db.password}</prop>
+	                </props>
+	            </constructor-arg>
+	            <property name="driverClassName" value="${db.driverClass}" />
+	            <property name="minimumIdle" value="5" />
+	            <property name="maximumPoolSize" value="10" />
+	            <property name="connectionTestQuery" value="SELECT 1" />
+	            <property name="connectionTimeout"  value="300000" />
+	        </bean>
+	    </constructor-arg>
+	</bean>
+	
+	<!-- mapper interface를 이용한 설정 -->
+	<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.web.user.dao.IUserMapper"/>
+		<property name="sqlSessionTemplate" ref="sqlSession" />
+	</bean>
+	<bean id="channelMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.web.channel.dao.IChannelMapper" />
+		<property name="sqlSessionTemplate" ref="sqlSession" />
+	</bean>
+	<bean id="friendsMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.web.friends.dao.IFriendsMapper" />
+		<property name="sqlSessionTemplate" ref="sqlSession" />
+	</bean>
+	<!-- MyBatis 설정 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:config/SqlMapConfig.xml" />
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:mapper/User.xml</value>
+				<value>classpath:mapper/Channel.xml</value>
+				<value>classpath:mapper/Friends.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" >
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+	
+	<!-- 트랜잭션 관리를 위한 bean -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+  		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<context:component-scan base-package="com.web" />
+</beans>

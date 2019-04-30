@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.web.channel.dao.IChannelMapper">
+	<insert id="addChannel" parameterType="Channel" >
+		INSERT INTO channel VALUES (default,#{cname},#{clevel},#{cnick},#{cuemail},#{cmaster},#{cuname},default,#{ccode})
+	</insert>
+	<select id="channelList" parameterType="Channel" resultType="Channel" >
+		SELECT DISTINCT cname,clevel,cnick,cuemail,cmaster,cuname,cicon,ccode 
+		FROM channel 
+		WHERE cuemail=#{cuemail} 
+		ORDER BY cid DESC
+	</select>
+	<select id="channelInfo" parameterType="Channel" resultType="Channel" >
+		SELECT DISTINCT c.cname,c.clevel,c.cnick,c.cuemail,c.cuname,c.cicon,c.ccode,
+		(SELECT uprofilename FROM users u WHERE u.uemail = c.cuemail) AS uprofilename
+		FROM channel c
+		WHERE c.cuemail=#{cuemail} 
+		AND c.ccode=#{ccode};
+	</select>
+	<select id="channeInvite" parameterType="Channel" resultType="Channel" >
+		select cname,cmaster,ccode from channel WHERE cuemail=#{cuemail} AND ccode=#{ccode};
+	</select>
+	<insert id="attendChannel" parameterType="Channel" >
+		INSERT INTO channel 
+		(cname,clevel,cnick,cuemail,cmaster,cuname,cicon,ccode) 
+		select cname,#{clevel},#{cnick},#{cuemail},cmaster,#{cuname},cicon,ccode 
+		FROM channel 
+		WHERE cmaster=#{cmaster} AND ccode=#{ccode};
+	</insert>
+	<select id="channelContacts" parameterType="Channel" resultType="Channel" >
+		SELECT DISTINCT clevel,cnick,cuemail,cmaster,cuname,umystatus,ustatus,uprofilename from channel ch 
+		JOIN users ON users.uemail = ch.cuemail
+		where ch.ccode =#{ccode}
+		ORDER BY cid ASC;
+	</select>
+	<delete id="channelDelete" parameterType="String">
+		DELETE FROM channel 
+		WHERE ccode = #{ccode};
+	</delete>
+</mapper> 

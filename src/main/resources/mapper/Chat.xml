@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.web.chat.dao.IChatMapper">
+	<select id="userChatList" parameterType="Chat" resultType="Chat" >
+		<!-- SELECT *,
+		(SELECT uname FROM USERS u WHERE u.uemail = UC.uctoid) AS uname ,
+		(SELECT ustatus FROM USERS u WHERE u.uemail = UC.uctoid) AS ustatus,
+		(SELECT umystatus FROM USERS u WHERE u.uemail = UC.uctoid) AS umystatus
+		FROM userchat UC 
+		WHERE (UC.ucfromid=#{ucfromid} AND UC.uctoid=#{uctoid}) 
+		OR (UC.ucfromid=#{uctoid} AND UC.uctoid=#{ucfromid}); -->
+		SELECT *,
+		(SELECT uprofilename FROM USERS u WHERE u.uemail =uc.ucfromid) AS uprofilename 
+		FROM userchat uc 
+		LEFT OUTER JOIN channel ON channel.ccode = UC.ucmessage
+		WHERE (uc.ucfromid=#{ucfromid} AND uc.uctoid=#{uctoid}) 
+		OR (uc.ucfromid=#{uctoid} AND uc.uctoid=#{ucfromid})
+		ORDER BY ucdate ASC;
+	</select>
+	<insert id="userSendMessage" parameterType="Chat" >
+		INSERT INTO userchat VALUES 
+		(default,#{ucfromid},#{ucfromname},#{uctoid},#{ucmessage},default);
+	</insert>
+</mapper>

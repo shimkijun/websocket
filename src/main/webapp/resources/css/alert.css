@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+.alert{
+	position: absolute;
+    bottom: 50px;
+    right: 50px;
+}
+
+.alert ul li{
+	width:100%;
+	position:relative;
+	left:150%;
+	transition:all .5s;
+	opacity: 0;
+	background-color:#2f3136;
+	border-radius: 5px;
+	padding:10px;
+	color:#fff;
+	font-size:16px;
+	margin:5px 0;
+	cursor: pointer;
+}
+
+.alert ul li div::after{
+	display: block;
+	clear:both;
+	content:"";
+}
+
+.alert ul li div > p{
+	float:left;
+	padding:5px;
+	line-height:28px;
+}
+
+.alert ul li div > p img {
+	width:70px;
+	height:70px;
+	border-radius: 100%;
+}

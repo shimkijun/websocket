@@ -1,0 +1,66 @@
+@charset "UTF-8";
+/* 친구추가 헤더 네비 영역 */
+	.mainFriendMe{
+		height:100%;
+		overflow-y:auto;
+		cursor:default;
+	}
+	.mainFriendMe .headLine li{
+		min-width:40px;
+		font-size:14px;
+		line-height:18px;
+		margin:0 8px;
+		padding:2px 8px;
+		display:inline-block;
+		position:relative;
+		cursor:pointer;
+		border-radius:3px;
+		color:rgba(185,187,190,0.6);
+	}
+	.mainFriendMe .headLine li.primary{
+		color:#fff;
+		background-color:#7289da;
+		position:relative;
+		vertical-align: 1px;
+	}
+	li.primary > span.count{
+		font-size: 10px;
+	    padding: 0 3px;
+	    background-color: #f04747;
+	    border-radius: 3px;
+	    margin-left: 4px;
+	}
+	
+	.mainFriendMe .headLine li.on{
+		color:#36393f !important;
+		background-color:#fff !important;
+	}
+	.mainFriendMe .headLine li:hover:not(.primary){
+		background-color:#2f3136;
+	}
+	.mainFriendMe .headLine li:first-child:before,
+	.mainFriendMe .headLine li:last-child:before{
+		content:"";
+		display:block;
+		width:1px;
+		height:20px;
+		position:absolute;
+		right:-10px;
+		top:50%;
+		transform:translateY(-50%);
+		background-color:rgba(114,118,125,.3);
+	}
+	.mainFriendMe .headLine li:first-child:before{
+		right:-10px;
+	}
+	.mainFriendMe .headLine li:last-child:before{
+		left:-10px;
+	}
+	
+	
+	
+	
+	
+	
+
+	

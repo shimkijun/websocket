@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.web.chatlist.dao.IChatListMapper">
+	<update id="insertChatList" parameterType="ChatList">
+		INSERT INTO chatlist(clemail,uemail,uname) 
+		SELECT #{clemail},uemail,uname FROM users 
+		WHERE uemail=#{uemail};
+	</update>
+	<select id="chatList" parameterType="ChatList" resultType="ChatList" >
+		SELECT *,
+		(SELECT ustatus FROM users u where u.uemail = cl.uemail) as ustatus,
+		(SELECT umystatus FROM users u where u.uemail = cl.uemail) as umystatus,
+		(SELECT uprofilename FROM users u where u.uemail = cl.uemail) as uprofilename
+		FROM chatlist cl WHERE clemail=#{clemail};
+	</select>
+	<select id="chatListCheck" parameterType="ChatList" resultType="ChatList" >
+		SELECT * FROM chatlist WHERE clemail=#{clemail} AND uemail=#{uemail};
+	</select>
+	<delete id="deleteList" parameterType="String" >
+		DELETE FROM chatlist WHERE uemail=#{value}
+	</delete>
+</mapper>

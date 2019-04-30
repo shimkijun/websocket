@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+	
+	<aop:aspectj-autoproxy />
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/css/**" location="/resources/css/" /> 
+	<resources mapping="/images/**" location="/resources/images/" /> 
+	<resources mapping="/js/**" location="/resources/js/" />
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<context:component-scan base-package="com.web" />
+	
+	<!-- 회원이 아니면 접근 할 수 없음. -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/"/>
+			<beans:bean id="userInterceptor" class="com.web.interceptor.LoginInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
+	<!-- 회원은 접근 할 수 없음 -->
+	 <interceptors>
+		<interceptor>
+			<mapping path="/user/login"/>
+			<mapping path="/user/register"/>
+			<beans:bean id="notUserInterceptor" class="com.web.interceptor.NotUserLoginInterceptor"/>
+		</interceptor>
+	</interceptors> 
+	
+	<!-- 파일업로드 bean -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="10485760"></beans:property>
+	</beans:bean>
+	<beans:bean id="uploadPath" class="java.lang.String">
+		<beans:constructor-arg value="D:\JAVA\portfolio\Discord\src\main\webapp\resources\upload"></beans:constructor-arg>
+	</beans:bean>
+	
+	 <!-- websocket handler -->
+
+	<beans:bean id="chatHandler" class="com.web.chat.websocket.ChatEchoHandler"/>
+	
+	<websocket:handlers>
+	 <websocket:mapping handler="chatHandler" path="/userChat" />
+	 <websocket:handshake-interceptors>
+	      <beans:bean
+	          class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+	 </websocket:handshake-interceptors>
+	</websocket:handlers>
+	
+	
+	<beans:bean id="channelChatHandler" class="com.web.chat.websocket.ChannelChatHandler"/>
+	
+	<websocket:handlers>
+	<websocket:mapping handler="channelChatHandler" path="/channelChat" />
+	 <websocket:handshake-interceptors>
+	      <beans:bean
+	          class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+	 </websocket:handshake-interceptors>
+	</websocket:handlers>
+	
+	
+	<beans:bean id="alertHandler" class="com.web.chat.websocket.AlertHandler"/>
+	
+	<websocket:handlers>
+	<websocket:mapping handler="alertHandler" path="/alert" />
+	 <websocket:handshake-interceptors>
+	      <beans:bean
+	          class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+	 </websocket:handshake-interceptors>
+	</websocket:handlers>
+		
+</beans:beans>

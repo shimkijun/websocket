@@ -1,0 +1,34 @@
+@charset "UTF-8";
+	html,body,#wrap{
+		height:100%;
+		overflow:hidden;
+	}
+	.errorColor{
+		color:#f04747 !important;
+	}
+	.errorBorder{
+		border-color:#f04747 !important;
+	}
+	
+	.errorSizeColor{
+		color:#f04747 !important;
+	}
+	.errorSizeBorder{
+		border-color:#f04747 !important;
+	}
+	.mainContent{
+		width:calc(100% - 240px);
+		float:left;
+		background-color:#36393f;
+		height:100%;
+		position:relative;
+	}
+	.headLine{
+		-webkit-box-shadow: 0 1px 0 rgba(32,34,37,.7), 0 2px 0 rgba(0,0,0,.06);
+	    background: #36393f;
+	    box-shadow: 0 1px 0 rgba(32,34,37,.7), 0 2px 0 rgba(0,0,0,.06);
+	    color: #b9bbbe;
+	    height:48px;
+	    line-height:48px;
+	    padding:0 8px 0 12px;
+	}

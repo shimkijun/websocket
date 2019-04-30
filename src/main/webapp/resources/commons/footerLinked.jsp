@@ -1,0 +1,15 @@
+<script type="text/javascript" src="/js/utill/alertWebsocket.js"></script>
+<script type="text/javascript" src="/js/moveForm.js"></script>
+<script type="text/javascript" src="/js/user/register.js"></script>
+<script type="text/javascript" src="/js/user/login.js"></script>
+<script type="text/javascript" src="/js/user/user.js"></script>
+<script type="text/javascript" src="/js/sideNav.js"></script>
+<script type="text/javascript" src="/js/channel/addChannel.js"></script>
+<script type="text/javascript" src="/js/channel/deleteChannel.js"></script>
+<script type="text/javascript" src="/js/friends/conditionChange.js"></script>
+<script type="text/javascript" src="/js/friends/friendList.js"></script>
+<script type="text/javascript" src="/js/friends/addFriends.js"></script>
+<script type="text/javascript" src="/js/channel/addChannel.js"></script>
+<script type="text/javascript" src="/js/channel/channelChat.js"></script>
+<script type="text/javascript" src="/js/chat/chatList.js"></script>
+<script type="text/javascript" src="/js/chat/chatMsgList.js"></script>

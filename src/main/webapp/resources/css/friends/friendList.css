@@ -1,0 +1,256 @@
+@charset "UTF-8";
+
+	.fmTable{
+		padding-top:8px;
+	}
+	
+	.fmTableHeader{
+		border-bottom: 1px solid rgba(233,233,233,0.1);
+		padding:8px 40px;
+	}
+	
+	.fmTableHeader > span{
+		display:inline-block;
+		font-size:12px;
+		color:#99aab5;
+		vertical-align: middle;
+	}
+	.fmTableHeader > span.separator{
+		width:1px;
+		height:18px;
+		margin:0 20px;
+		background-color:rgba(233,233,233,0.1);
+	}
+	.fmTbableBody{
+		padding:2px 0 20px;
+		overflow-x:hidden;
+	}
+ 	.fmTbableBody > ul > li{ 
+		font-size:16px;
+		font-weight:500;
+		line-height:20px;
+		overflow:hidden;
+		margin:0 12px 0 30px;
+		cursor: pointer;
+		border-top:1px solid rgba(233,231,231,.1);
+		line-height:59px;
+		color:rgba(115,127,141,1);
+		padding-left:10px;
+		height:0;
+		opacity:0;
+		overflow:hidden;
+		position:relative;
+	}
+	.fmTbableBody > ul > li:first-child{
+		border-top:none;
+	}
+	.fmTbableBody > ul > li:hover{
+		background-color:rgba(79,84,92,.3);
+		border-color:transparent;
+		box-shadow:0 2px 1px 0 rgba(0,0,0,.1);
+	}
+	.fmTbableBody > ul > li:hover span.fmCode{
+		display:inline-block !important;
+	}
+	.fmTbableBody > ul > li:hover .friendDeleteBtn,
+	.fmTbableBody > ul > li:hover .friendUpdateBtn{
+		display:block;
+	}
+	.fmTbableBody > ul > li::after{
+		display:block;
+		clear:both;
+		content:"";
+	}
+	.fmTbableBody > ul > li > div > div{
+		height:100%;
+		float:left;
+	}
+	.fmTbableBody div > span{
+		display:inline-block;
+		vertical-align: middle;
+	}
+	span.fmh-status,
+	div.fmb-status{
+		width:250px;
+	}
+	div.fmb-status,
+	div.fmb-server{
+		margin-left:48px;
+	}
+	span.fmh-name,
+	span.fmh-server,
+	div.fmb-name,
+	div.fmb-server{
+		width:200px;
+	}
+	div.fmb-name{
+		font-size:13px;
+		overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+		
+	}
+	span.fmIcon{
+		width:30px;
+		height:30px;
+		margin-right:10px;
+		font-weight:700;
+	}
+	span.fmCode{
+		font-size:11px;
+		display:none !important;
+	}
+	.fmIcon img{
+		width:100%;
+		height:100%;
+		border-radius:100%;
+		vertical-align: top;
+	}
+	
+	span.fmStatus1,
+	span.fmStatus2,
+	span.fmStatus3,
+	span.fmStatus4{
+		width:10px;
+		height:10px;
+		border-radius:100%;
+		margin-right:5px;
+		position:relative;
+	}
+	span.fmStatus1{
+		background-color:#43b581;
+	}
+	span.fmStatus2{	
+		background-color:#faa61a;
+	}
+	span.fmStatus3{	
+		background-color:#f04747;
+	}
+	span.fmStatus4,span.fmuStatus0{	
+		background-color:#747f8d;
+	}
+	span.fmServer{
+		width:30px;
+		height:30px;
+		background-color:#2f3136;
+		line-height:27px;
+		text-align:center;
+		color:#fff;
+		border-radius:100%;
+	}
+	.frEmptyTxt{
+	    position: absolute;
+	    left: -180%;
+	    display: inline-block;
+	    top: -35px;
+	    padding: 10px 20px;
+	    border-radius: 3px;
+	    color: #72767d;
+	    background-color: #2f3136;
+	    font-size: 14px;
+    }
+	.frEmptyImg{
+		position: absolute;
+	    right: 0;
+	    bottom: 0;
+	    width: 108px;
+	}
+	.frEmptyImg img{
+		width:100%;
+	}
+	/*==================*/
+	
+	.friendDeleteBtn,
+	.friendUpdateBtn{
+		width:36px;
+		height:36px;
+		border-radius:3px;
+		cursor:pointer;
+		background-color:#2f3136;
+		border:none;
+		color:#fff;
+		position:absolute;
+		right:20px;
+		top:50%;
+		transform:translateY(-50%);
+		display:none;
+		transition:all .3s;
+	}
+	.friendDeleteBtn:hover{
+		background-color:#f04747;
+	}
+	
+	.friendUpdateBtn:hover{
+		background-color:#43b581;
+	}
+	
+	.deleteFriendForm{
+		width: 440px;
+	    background-color: #36393f;
+	    -webkit-box-shadow: 0 0 0 1px rgba(32,34,37,.6), 0 2px 10px 0 rgba(0,0,0,.2);
+	    box-shadow: 0 0 0 1px rgba(32,34,37,.6), 0 2px 10px 0 rgba(0,0,0,.2);
+	    height: 200px;
+	    position: absolute;
+	    left: 50%;
+	    top: 50%;
+	    z-index: 55;
+	    border-radius: 5px;
+	    overflow:hidden;
+	    transform:translate(-50%,-50%);
+	}
+	.deleteFriendForm > h2{
+		padding:20px;
+		color:#f6f6f7;
+		font-size:16px;
+		line-height:20px;
+		letter-spacing:.3px;
+		text-transform: uppercase;
+		overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	    height:30%;
+	}
+	.deleteFriendForm .deleteConfirm{
+		padding:0 12px 20px 20px;
+		color:#dcddde;
+		line-height:20px;
+		height:31%;
+	}
+	.deleteFriendForm .deleteBtnBox{
+		height:39%;
+		-webkit-box-shadow: inset 0 1px 0 rgba(47,49,54,.6);
+	    background-color: #2f3136;
+	    box-shadow: inset 0 1px 0 rgba(47,49,54,.6);
+	    padding:20px;
+	    text-align:right;
+	}
+	
+	.deleteBtnBox > span{
+		display:inline-block;
+		height:100%;
+		color:#fff;
+		font-size:14px;
+		border-radius:3px;
+		text-align:center;
+		padding:2px 16px;
+		cursor:pointer;
+		line-height:35px;
+		width:96px;
+	}
+	
+	.deleteBtnBox > span.deleteCancel:hover{
+		text-decoration: underline;
+	}
+	
+	.deleteBtnBox > span.deleteOk,
+	.deleteBtnBox > span.logoutOk,
+	.deleteBtnBox > span.userDeleteOk,
+	.deleteBtnBox > span.deleteChannel{
+		background-color:#f04747;
+	}
+	.deleteBtnBox > span.deleteOk:hover,
+	.deleteBtnBox > span.logoutOk:hover,
+	.deleteBtnBox > span.userDeleteOk:hover,
+	.deleteBtnBox > span.deleteChannel:hover{
+		background-color:#d84040;
+	}

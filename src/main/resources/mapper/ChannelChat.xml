@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.web.channelchat.dao.IChChatMapper">
+	<select id="channelchat" parameterType="chChat" resultType="chChat" >
+		SELECT * ,
+		(SELECT uprofilename FROM users u where u.uemail = ch.ccfromid) as uprofilename,
+		(SELECT cnick FROM channel c where c.cuemail = ch.ccfromid AND c.ccode = ch.ccode)
+		AS nick FROM channelChat ch 
+		WHERE ch.ccode=#{ccode};
+	</select>
+	<insert id="chSendMessage" parameterType="chChat" >
+		INSERT INTO channelchat VALUES 
+		(default,#{ccfromid},#{ccmessage},default,#{ccode});
+	</insert>
+</mapper>

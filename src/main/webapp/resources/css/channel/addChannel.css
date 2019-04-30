@@ -1,0 +1,283 @@
+@charset "UTF-8";
+	.addContent2{
+		position:relative;
+	}
+	.addContent2 h3{
+		color:#7289da;
+		font-size:18px;
+		font-weight:700;
+		text-align:center;
+	}
+	
+	.addContent2 h4{
+		color:#99aab5;
+		margin-bottom:4px;
+		font-weight:500;
+		line-height:1.2;
+		padding:10px 0;
+		font-size:18px;
+		text-align:center;
+	}
+	.addContent2 h4 strong{
+		font-weight:700;
+	}
+	.addChannelForm{
+		margin-top:25px;
+	}
+	.addChannelForm::after{
+		display:block;
+		clear:both;
+		content:"";
+	}
+	
+	.addChannelForm > div{
+		float:left;
+	}
+	
+	.addChannelForm > div:first-child{
+		width:60%;
+		padding-right:10%;
+	}
+	.addChannelForm > div:last-child{
+		width:40%;
+	}
+	
+	.addChannelForm > div label{
+		color:#87909c;
+		font-size:11px;
+		font-weight:700;
+		text-transform: uppercase;
+		display:block;
+		transition:all .3s;
+		
+	}
+	
+	.addChannelForm > div label.error{
+		color:#f04747;
+	}
+	
+	.addChannelForm #cname{
+		background: transparent;
+    	border-bottom-color: #f0f0f0;
+    	color: #2f3136;
+        border-color: rgba(79,84,92,.3);
+        border-bottom-style: solid;
+	    border-radius: 0;
+	    border-width: 0 0 2px;
+	    font-size: 16px;
+	    margin-top: 12px;
+	    width: 100%;
+	    height: 40px;
+    	padding: 10px 4px;
+    	outline:0;
+	}
+	.addChannelForm #cname:focus{
+		border-color: #7289da;
+	}
+	.addChannelForm .iconChangeBox{
+		 width: 138px;
+		 height: 138px;
+		 border-radius:100%;
+		 border: 5px solid #ebebeb;
+		 position:relative;
+		 background-color:#7289da;
+		 text-align:center;
+		 margin-bottom:7px;
+	}
+	
+	.addChannelForm .iconChangeBox:hover{
+		-webkit-box-shadow: inset 0 0 120px rgba(0,0,0,.75);
+    	box-shadow: inset 0 0 120px rgba(0,0,0,.75);
+	}   
+    .addChannelForm .iconChangeBox:hover .iconTxt{
+    	display:block;
+    }
+    .addChannelForm #cicon{
+    	 position: absolute;
+	    top: 0px;
+	    left: 0px;
+	    width: 100%;
+	    height: 100%;
+	    opacity: 0;
+	    cursor: pointer;
+    }  
+
+    .addChannelForm .iconTxt{
+    	position:absolute;
+    	left:50%;
+    	top:50%;
+    	transform:translate(-50%,-50%);
+    	font-size: 10px;
+	    font-weight: 700;
+	    line-height: 12px;
+	    text-transform: uppercase;
+	   	display:none;
+	    white-space: pre;
+	    color:#fff;
+    }
+    .addChannelForm .iconFileSize{
+    	width:138px;
+    	font-size:10px;
+    	color:#87909c;
+    	display:block;
+    	text-align:center;
+    }
+    .addChannelBtn{
+    	width: 100%;
+    	position: absolute;
+	    left: 0;
+	    bottom: 0;
+	    padding: 25px 40px;
+	    background-color:#f6f6f7;
+    }
+    
+    .addChannelBtn > div{
+    	display:inline-block;
+    }
+    
+    .addChannelBtn .addChannelBack{
+    	font-size:14px;
+    	padding-bottom:7px;
+    	border-bottom-style: solid;
+    	border-bottom-width: 2px;
+    	border-color:transparent;
+    	float:left;
+    	color:#949494;
+    	cursor:pointer;
+    	margin-top:9px;
+    }
+    .addChannelBtn .addChannelBack:hover{
+    	border-color:#949494;
+    }
+    
+    .addChannelBtn .addChannelBack i{
+    	font-size:20px;
+    	margin-right:7px;
+    	vertical-align: middle;
+    }
+    .addChannelBtn .addBtn{
+    	float:right;
+    }
+    .addChannelBtn .addBtn button{
+    	background-color:#7289da;
+    	border-radius: 3px;
+    	font-size:14px;
+    	line-height:16px;
+    	padding:2px 27px;
+    	border:none;
+    	color:#fff;
+    	cursor: pointer;
+    	height:38px;
+    }
+    .addChannelBtn .addBtn button:hover{
+    	background-color:#7289da;
+    }
+
+	.DarkBack{
+		width:100%;
+		height:100%;
+		background-color:rgba(0,0,0,0.85);
+		z-index:55;
+		position:absolute;
+	}
+	.addchannel{
+		width:540px;
+		height:420px;
+		position:absolute;
+		left:50%;
+		top:50%;
+		transform:translate(-50%,-50%);
+	    z-index:56;
+	}
+	.addContent{
+		width:100%;
+		height:100%;
+		overflow:hidden;
+	}
+
+	.addContent > ul{
+		transition:all .4s;
+		width:200%;
+		height:100%;
+	}
+	.addContent > ul.moveLeft{
+		margin-left:-100%;
+	}
+	.addContent > ul > li{
+		width:50%;
+		float:left;
+		height:100%;
+		padding:28px 40px 0;
+		border-radius:4px;
+		background-color:#fff;
+	}
+	.addContent > ul > .addContent1{
+		text-align:center;
+		background-image:url(/images/addChannelBack.png),url(/images/addChannelBack1.png);
+		background-position: 0 100%,100% 100%;
+	    background-repeat: no-repeat;
+	    background-size: 155px auto,75px auto;
+	}
+	.addContent1 h3{
+		color:#7289da;
+		font-size: 18px;
+	    font-weight: 700;
+	    margin-bottom: 32px;
+	    margin-top: 6px;
+	    padding: 0;
+	    text-align: center;
+	    text-transform: uppercase;
+	}
+	.addContent1 .createServer{
+		border-radius: 3px;
+	    cursor: pointer;
+	    display: inline-block;
+	    overflow: hidden;
+	    padding: 10px;
+	    width: 228px;
+	    background: hsla(0,0%,100%,.75);
+	    border: 1px solid rgba(0,0,0,.1);
+	    box-shadow: 0 2px 4px rgba(0,0,0,.08);
+	}
+	.createServer h4{
+		color:#7289da;
+		font-size: 18px;
+	    font-weight: 500;
+	    margin-top: 20px;
+	    text-transform: uppercase;
+	}
+    .createServer .createTxt{
+    	color:#99aab5;
+    	font-size: 14px;
+	    font-weight: 400;
+	    line-height: 20px;
+	    margin-top: 16px;
+	    padding: 0 15px;
+    }   
+    .createServer .createImg{
+    	margin: 26px 0;
+    }
+    .createImg img{
+    	width:135px;
+    }    
+    
+    .createBtn button{
+    	background-color:#7289da;
+    	color:#fff;
+    	border-radius: 3px;
+	    cursor: pointer;
+	    font-size: 14px;
+	    font-weight: 500;
+	    line-height: 16px;
+	    padding: 10px 20px;
+	    width: 100%;
+	    border:none;
+	    border-radius: 3px;
+	    outline: none;
+	    transition: background-color .2s ease;
+    }
+	.addContent1 .createServer:hover button{
+		background-color:#677bc4;
+	}
+	
+	

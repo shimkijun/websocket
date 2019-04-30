@@ -1,0 +1,164 @@
+@charset "UTF-8";
+	.registerWrap{
+		position:absolute;
+		left:0;
+		top:0;
+		width:100%;
+		height:100%;
+		background-image:url("/images/main.jpg");
+		background-size: cover;
+   	 	background-position: 50% 50%;
+	}
+	.registerWrap > #logo{
+		width:150px;
+		position: absolute;
+		left:60px;
+		top:45px;
+		z-index:100;
+	}
+	.registerForm{
+		max-width:480px;
+		width:100%;
+		padding:40px;
+		background-color:#36393f;
+		border-radius:5px;
+		box-shadow: 0 2px 10px 0 rgba(251,249,249,.2);
+		color:#72767d;
+		font-size:18px;
+		position:absolute;
+		opacity:0;
+		right:20%;
+		top:15%;
+	}
+	
+	.registerForm .form-title{
+		text-align:center;
+		margin-bottom:30px;
+	}
+	.registerForm .form-title h2{
+		font-size:28px;
+		line-height:32px;
+		margin-bottom:8px;
+		color:#fff;
+	}
+	.registerForm .form-title p{
+		font-size:15px;
+		line-height:22px;
+	}
+	
+	.registerForm .form-group{
+		margin-bottom:20px;
+		width:100%;
+	}
+	.registerForm .form-group label{
+		display:none;
+	}
+	.registerForm .form-group h5{
+		color:#b9bbbe;
+		margin-bottom:8px;
+		font-size:12px;
+		line-height:16px;
+		transition:all .3s;
+	}
+
+	.registerForm .errorMessage{
+		margin-left:5px;
+		font-size:11px;
+	}
+	
+	.registerForm .form-group-input input{
+		width:100%;
+		padding:10px;
+		border-radius: 3px;
+		border:1px solid #000;
+		background-color:rgba(0, 0, 0, 0.1);
+		-webkit-appearance: none;
+		color:#fff;
+		transition:all .2s;
+		-webkit-transition:all .3s;
+	}
+	.registerForm .form-group-input input:focus{
+		outline: none;
+		border-color:#7289da;
+	}
+	
+	.registerForm .form-group-link{
+		font-size:14px;
+	}
+	
+	.registerForm .form-group-link a{
+		color:#7289da;
+	}
+	.registerForm .form-group-link a:hover{
+		text-decoration: underline;
+	}
+	
+	.registerForm .form-group-btn button{
+		width:100%;
+		background-color:#7289da;
+		color:#fff;
+		font-size:16px;
+		line-height:24px;
+		border-radius: 3px;
+		margin:20px 0 10px;
+		cursor: pointer;
+		height:40px;
+		padding:0 5px;
+		border:none;
+		transition:all .3s;
+	}
+	.registerForm .form-group-btn button:hover{
+		background-color:#677bc4;
+	}
+	
+		@media (max-width:1024px) {
+		.registerWrap > #logo{
+			left:50%;
+			transform:translateX(-50%);
+		}
+		.registerForm{
+			right:50%;
+			transform:translateX(50%);
+		}
+	}
+	
+	@media (max-width:560px) {
+		.registerWrap > #logo{
+			top:25px;
+		}
+		.registerForm{
+			max-width:340px;
+			padding:15px;
+			font-size:14px;
+			right:50%;
+			transform:translateX(50%);
+		}
+		
+		.registerForm .form-title h2{
+			font-size:18px;
+		}
+		.registerForm .form-title p{
+			font-size:13px;
+		}
+		.registerForm .form-title{
+			margin-bottom:15px;
+		}
+		.registerForm .form-group h5{
+			margin-bottom:5px;
+			font-size:11px;
+		}
+		
+		.registerForm .form-group-link{
+			font-size:12px;
+		}
+	}
+	
+	@media (max-width:330px){
+		.registerForm{
+			max-width:280px;
+			padding:10px;
+		}
+		.registerForm .form-group-btn button{
+			margin-top:0;
+		}
+	}

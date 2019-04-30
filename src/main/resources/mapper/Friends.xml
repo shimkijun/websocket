@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.web.friends.dao.IFriendsMapper">
+	<insert id="friendRequest" parameterType="Friends" >
+		INSERT INTO friends VALUES 
+		(default,#{freqemail},#{fresemail},#{freqcode},#{frescode},#{freswait})
+	</insert>
+	<select id="myFriendsList" parameterType="Friends" resultType="Friends" >
+		SELECT DISTINCT F.fresemail,F.frescode,F.freswait,
+		(SELECT uname FROM users u WHERE u.uemail = F.fresemail) AS uname ,
+		(SELECT ustatus FROM users u WHERE u.uemail = F.fresemail) AS ustatus,
+		(SELECT umystatus FROM users u WHERE u.uemail = F.fresEmail) AS umystatus,
+		(SELECT uprofilename FROM users u WHERE u.uemail = F.fresEmail) AS uprofilename
+		FROM friends F WHERE F.freqemail=#{freqemail}
+	</select>
+	<select id="friendRequestSearch" parameterType="Friends" resultType="Friends" >
+		SELECT * FROM friends 
+		WHERE freqemail=#{freqemail} AND fresemail=#{fresemail}
+	</select>
+	<select id="friendSuggestSearch" parameterType="Friends" resultType="Friends" >
+		SELECT F.freqemail,F.freqcode,F.freswait,
+		(SELECT uname FROM users u WHERE u.uemail = F.freqemail) AS uname,
+		(SELECT uprofilename FROM users u WHERE u.uemail = F.freqemail) AS uprofilename
+		FROM friends F WHERE F.fresemail=#{fresemail};
+	</select>
+	<update  id="friendAccept"  parameterType="Friends">
+		UPDATE friends SET freswait=#{freswait}
+		WHERE (freqemail=#{freqemail} AND fresemail=#{fresemail})
+		OR (freqemail=#{fresemail} AND fresemail=#{freqemail})
+	</update>
+	<delete id="friendDelete" parameterType="Friends">
+		DELETE FROM friends 
+		WHERE (freqemail=#{freqemail} AND fresemail=#{fresemail}) 
+		OR (freqemail=#{fresemail} AND fresemail=#{freqemail})
+	</delete>
+	<select id="friendOnlineCount" parameterType="Friends" resultType="Friends" >
+		SELECT DISTINCT F.fresemail,
+		(SELECT ustatus  FROM users u WHERE u.uemail = F.fresemail AND u.ustatus = 1) AS uStatus,
+		(SELECT umystatus FROM users u where u.uemail = F.fresemail  AND u.ustatus &lt; 4) AS umystatus
+		FROM friends F WHERE F.freqemail=#{freqemail}
+	</select>
+</mapper>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ <configuration>
+ 	<typeAliases>
+ 		<typeAlias alias="User" type="com.web.user.vo.UserVo"/>
+ 		<typeAlias alias="Channel" type="com.web.channel.vo.ChannelVo"/>
+ 		<typeAlias alias="Friends" type="com.web.friends.vo.FriendsVo"/>
+ 		<typeAlias alias="Chat" type="com.web.chat.vo.ChatVo"/>
+ 		<typeAlias alias="ChatList" type="com.web.chatlist.vo.ChatListVo"/>
+ 		<typeAlias alias="chChat" type="com.web.channelchat.vo.ChannelChatVo"/>
+ 	</typeAliases>
+ </configuration>

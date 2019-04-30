@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.web.user.dao.IUserMapper">
+  	<select id="selectUser" parameterType="User" resultType="User">
+		SELECT uid,uemail,uname,uCode,ustatus,umystatus,uprofilename FROM users WHERE uemail=#{uemail}
+	</select>
+	<select id="selectUserById" parameterType="User" resultType="User">
+		SELECT * FROM users WHERE uemail=#{uemail}
+	</select>
+	<insert id="insertUser" parameterType="User">
+		INSERT into users VALUES 
+		(default,#{uemail},#{uname},#{upassword},#{ucode},#{uip},default,default,default,#{uprofilename},default)
+	</insert>
+	<update id="statusUpdate" parameterType="User">
+		UPDATE users SET ustatus=#{ustatus} WHERE uemail=#{uemail}
+	</update>
+	<update id="mystatusUpdate" parameterType="User">
+		UPDATE users SET umystatus=#{umystatus} WHERE uemail=#{uemail}
+	</update>
+	<select id="getUserCodename" parameterType="User" resultType="User">
+		SELECT uid,uemail,uname,ucode,ustatus,umystatus,uprofilename FROM users WHERE uname =#{uname} AND ucode = #{ucode}; 
+	</select>
+	<update id="userModify" parameterType="User">
+		UPDATE users 
+		SET uname=#{uname},upassword=#{upassword} 
+		WHERE uemail=#{uemail};
+	</update>
+	<delete id="deleteUser" parameterType="String" >
+		DELETE FROM users WHERE uemail=#{uemail}
+	</delete>
+</mapper>
