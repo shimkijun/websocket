@@ -5,8 +5,8 @@
 	<select id="channelchat" parameterType="chChat" resultType="chChat" >
 		SELECT * ,
 		(SELECT uprofilename FROM users u where u.uemail = ch.ccfromid) as uprofilename,
-		(SELECT cnick FROM channel c where c.cuemail = ch.ccfromid AND c.ccode = ch.ccode)
-		AS nick FROM channelChat ch 
+		(SELECT uname FROM users u where u.uemail = ch.ccfromid) AS nick 
+		FROM channelChat ch 
 		WHERE ch.ccode=#{ccode};
 	</select>
 	<insert id="chSendMessage" parameterType="chChat" >
